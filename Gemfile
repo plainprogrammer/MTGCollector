@@ -13,15 +13,15 @@ gem "stimulus-rails"
 gem "tailwindcss-rails"
 gem "redis", "~> 4.0"
 
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 gem "bootsnap", require: false
 
 group :development, :test do
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "standard", "~> 1.31.1"
 end
 
 group :development do
   gem "web-console"
   gem "rack-mini-profiler"
 end
-
