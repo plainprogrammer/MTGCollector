@@ -19,6 +19,7 @@ gem "bootsnap", require: false
 group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", "~> 1.31.1"
+  gem "standard-rails", "~> 0.2.0"
 end
 
 group :development do
