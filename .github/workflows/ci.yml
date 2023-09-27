@@ -5,6 +5,7 @@ on:
   pull_request:
     branches: [ "main" ]
 jobs:
+
   analyze:
     runs-on: ubuntu-latest
     steps:
@@ -15,9 +16,24 @@ jobs:
       - run: bin/standardrb --no-fix --format github
   rspec:
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: mtgcollector_test
+          POSTGRES_PASSWORD: ""
+        ports: [ "5432:5432" ]
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - run: bin/rails db:setup
+        env:
+          RAILS_ENV: test
+          PGHOST: localhost
+          PGUSER: mtgcollector
+      - run: bin/rails mtgjson:fetch
+      - run: psql -d postgresql://postgres@localhost/mtgjson -f tmp/mtgjson.psql
       - run: bin/rspec --format RSpec::Github::Formatter
