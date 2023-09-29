@@ -4,7 +4,7 @@ require "mtgjson/fetch"
 RSpec.describe MTGJSON::Fetch, ".run" do
   let(:download_path) { MTGJSON::Fetch::DATABASE_DOWNLOAD_PATH }
   let(:checksum_path) { MTGJSON::Fetch::CHECKSUM_DOWNLOAD_PATH }
-  let(:database_path) { Rails.root.join("tmp", "mtgjson.psql") }
+  let(:database_path) { Rails.root.join("tmp", "mtgjson.sqlite") }
 
   before do
     File.delete download_path if File.exist? download_path

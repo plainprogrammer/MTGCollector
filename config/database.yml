@@ -1,28 +1,24 @@
 default_options: &default_options
-  adapter: postgresql
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  adapter: sqlite3
   encoding: unicode
-  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
-  port: <%= ENV.fetch("DB_PORT") { 5432 } %>
-  username: <%= ENV.fetch("DB_USER") { "" } %>
-  password: <%= ENV.fetch("DB_PASS") { "" } %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 mtgjson_options: &mtgjson_options
   <<: *default_options
   database_tasks: false
   prevent_writes: true
-  database: mtgjson
+  database: db/mtgjson.sqlite
 
 development:
   primary:
     <<: *default_options
-    database: mtgcollector_dev
+    database: db/development.sqlite
   mtgjson:
     <<: *mtgjson_options
 
 test:
   primary:
     <<: *default_options
-    database: mtgcollector_test
+    database: db/test.sqlite
   mtgjson:
     <<: *mtgjson_options

@@ -4,9 +4,9 @@ require "zlib"
 
 module MTGJSON
   module Fetch
-    DATABASE_DOWNLOAD_PATH = Rails.root.join("tmp", "mtgjson.psql.gz").freeze
-    CHECKSUM_DOWNLOAD_PATH = Rails.root.join("tmp", "mtgjson.psql.gz.sha256").freeze
-    DATABASE_UNZIPPED_PATH = Rails.root.join("tmp", "mtgjson.psql").freeze
+    DATABASE_DOWNLOAD_PATH = Rails.root.join("tmp", "mtgjson.sqlite.gz").freeze
+    CHECKSUM_DOWNLOAD_PATH = Rails.root.join("tmp", "mtgjson.sqlite.gz.sha256").freeze
+    DATABASE_UNZIPPED_PATH = Rails.root.join("tmp", "mtgjson.sqlite").freeze
 
     def self.run
       download_database_archive
@@ -23,14 +23,14 @@ module MTGJSON
     private_class_method :checksum_matches?
 
     def self.download_database_checksum
-      URI.open("https://mtgjson.com/api/v5/AllPrintings.psql.gz.sha256") do |download|
+      URI.open("https://mtgjson.com/api/v5/AllPrintings.sqlite.gz.sha256") do |download|
         File.binwrite(CHECKSUM_DOWNLOAD_PATH, download.read)
       end
     end
     private_class_method :download_database_checksum
 
     def self.download_database_archive
-      URI.open("https://mtgjson.com/api/v5/AllPrintings.psql.gz") do |download|
+      URI.open("https://mtgjson.com/api/v5/AllPrintings.sqlite.gz") do |download|
         File.binwrite(DATABASE_DOWNLOAD_PATH, download.read)
       end
     end
