@@ -6,7 +6,6 @@ default_options: &default_options
 mtgjson_options: &mtgjson_options
   <<: *default_options
   database_tasks: false
-  prevent_writes: true
   database: db/mtgjson.sqlite
 
 development:
