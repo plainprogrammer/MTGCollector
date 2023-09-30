@@ -22,6 +22,7 @@ group :development, :test do
   gem "standard-rails", "~> 0.2.0"
   gem "rspec-rails", "~> 6.0.3"
   gem "rspec-github", "~> 2.4", require: false
+  gem "rspec-its"
 end
 
 group :development do
