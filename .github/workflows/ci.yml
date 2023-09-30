@@ -20,4 +20,9 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - run: bin/rails db:setup
+        env:
+          RAILS_ENV: test
+      - run: bin/rails mtgjson:fetch
+      - run: mv tmp/mtgjson.sqlite db/mtgjson.sqlite
       - run: bin/rspec --format RSpec::Github::Formatter
