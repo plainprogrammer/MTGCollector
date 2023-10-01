@@ -1,0 +1,10 @@
+<%= turbo_frame_tag "search_results" do %>
+  <ul class="grid grid-cols-5 gap-2">
+  <% @cards.each do |card| %>
+    <li>
+      <%= image_tag card.scryfall_small_image_uri, class: "my-2" %>
+      <%= card.name %>
+    </li>
+  <% end %>
+  </ul>
+<% end %>

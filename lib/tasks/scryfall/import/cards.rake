@@ -29,8 +29,8 @@ namespace :scryfall do
       puts "Download complete!\n\n"
 
       Oj::Doc.open(raw_all_cards) do |doc|
-        doc.each_child do |doc|
-          card = doc.fetch
+        doc.each_child do |child|
+          card = child.fetch
           next if card["digital"]
 
           cards_to_import << {
@@ -39,7 +39,12 @@ namespace :scryfall do
             name: card["name"],
             collector_number: card["collector_number"],
             rarity: card["rarity"],
-            scryfall_normal_image_uri: doc.fetch("/image_uris/normal")
+            mana_cost: card["mana_cost"],
+            converted_mana_cost: card["cmc"],
+            type_line: card["type_line"],
+            scryfall_small_image_uri: card["image_uris"]&.[]("small"),
+            scryfall_normal_image_uri: card["image_uris"]&.[]("normal"),
+            scryfall_large_image_uri: card["image_uris"]&.[]("large")
           }
 
           if cards_to_import.size >= 1000
