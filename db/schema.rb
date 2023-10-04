@@ -10,5 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_04_154736) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "pgcrypto"
+  enable_extension "plpgsql"
+
+  create_table "card_sets", force: :cascade do |t|
+    t.uuid "scryfall_id"
+    t.string "code"
+    t.string "name"
+    t.date "released_on"
+    t.string "set_type"
+    t.integer "card_count"
+    t.string "icon_svg_uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["scryfall_id"], name: "index_card_sets_on_scryfall_id", unique: true
+  end
+
 end

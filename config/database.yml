@@ -1,23 +1,12 @@
-default_options: &default_options
-  adapter: sqlite3
+default: &default
+  adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
-mtgjson_options: &mtgjson_options
-  <<: *default_options
-  database_tasks: false
-  database: db/mtgjson.sqlite
-
 development:
-  primary:
-    <<: *default_options
-    database: db/development.sqlite
-  mtgjson:
-    <<: *mtgjson_options
+  <<: *default
+  database: mtgcollector
 
 test:
-  primary:
-    <<: *default_options
-    database: db/test.sqlite
-  mtgjson:
-    <<: *mtgjson_options
+  <<: *default
+  database: mtgcollector_test
