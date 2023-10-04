@@ -16,6 +16,12 @@ jobs:
   rspec:
     name: "Test"
     runs-on: ubuntu-latest
+    env:
+      RAILS_ENV: test
+      DB_HOST: localhost
+      DB_USER: postgres
+      DB_PASS: postgres
+      DB_PORT: 5432
     services:
       postgres:
         image: postgres:16
@@ -35,10 +41,4 @@ jobs:
         with:
           bundler-cache: true
       - run: bin/rails db:setup
-        env:
-          RAILS_ENV: test
-          DB_HOST: localhost
-          DB_USER: postgres
-          DB_PASS: postgres
-          DB_PORT: 5432
       - run: bin/rspec --format RSpec::Github::Formatter
