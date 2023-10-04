@@ -16,6 +16,19 @@ jobs:
   rspec:
     name: "Test"
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+        # Set health checks to wait until postgres has started
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports: ["5432:5432"]
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1
@@ -24,4 +37,8 @@ jobs:
       - run: bin/rails db:setup
         env:
           RAILS_ENV: test
+          DB_HOST: localhost
+          DB_USER: postgres
+          DB_PASS: postgres
+          DB_PORT: 5432
       - run: bin/rspec --format RSpec::Github::Formatter
