@@ -38,7 +38,8 @@ namespace :scryfall do
             scryfall_set_id: card["set_id"],
             name: card["name"],
             collector_number: card["collector_number"],
-            rarity: card["rarity"]
+            rarity: card["rarity"],
+            scryfall_normal_image_uri: doc.fetch("/image_uris/normal")
           }
 
           if cards_to_import.size >= 1000
