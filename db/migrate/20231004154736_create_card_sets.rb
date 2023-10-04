@@ -1,7 +1,5 @@
 class CreateCardSets < ActiveRecord::Migration[7.0]
   def change
-    enable_extension "pgcrypto"
-
     create_table :card_sets do |t|
       t.uuid :scryfall_id, index: {unique: true}
       t.string :code
