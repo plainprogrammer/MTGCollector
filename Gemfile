@@ -23,6 +23,7 @@ group :development, :test do
   gem "rspec-rails", "~> 6.0.3"
   gem "rspec-github", "~> 2.4", require: false
   gem "rspec-its"
+  gem "shoulda-matchers", "~> 5.3.0"
 end
 
 group :development do

@@ -218,6 +218,8 @@ GEM
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
     ruby-progressbar (1.13.0)
+    shoulda-matchers (5.3.0)
+      activesupport (>= 5.2.0)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -283,6 +285,7 @@ DEPENDENCIES
   rspec-github (~> 2.4)
   rspec-its
   rspec-rails (~> 6.0.3)
+  shoulda-matchers (~> 5.3.0)
   sprockets-rails
   standard (~> 1.31.1)
   standard-rails (~> 0.2.0)
