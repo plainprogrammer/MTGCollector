@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_182434) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+  enable_extension "uuid-ossp"
 
   create_table "card_sets", force: :cascade do |t|
     t.uuid "scryfall_id"
@@ -38,6 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_04_182434) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["scryfall_id"], name: "index_cards_on_scryfall_id", unique: true
+    t.index ["scryfall_set_id"], name: "index_cards_on_scryfall_set_id"
   end
 
 end
