@@ -5,7 +5,7 @@ ruby "~> 3.2.2"
 
 gem "rails", "~> 7.0.7", ">= 7.0.7.2"
 gem "sprockets-rails"
-gem "sqlite3", "~> 1.6.6"
+gem "pg", "~> 1.5.4"
 gem "puma", "~> 5.0"
 gem "importmap-rails"
 gem "turbo-rails"
@@ -23,9 +23,11 @@ group :development, :test do
   gem "rspec-rails", "~> 6.0.3"
   gem "rspec-github", "~> 2.4", require: false
   gem "rspec-its"
+  gem "shoulda-matchers", "~> 5.3.0"
 end
 
 group :development do
   gem "web-console"
   gem "rack-mini-profiler"
+  gem "oj", "~> 3.16.1"
 end
