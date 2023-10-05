@@ -1,9 +1,10 @@
 <%= turbo_frame_tag "search_results" do %>
   <ul class="grid grid-cols-5 gap-2">
   <% @cards.each do |card| %>
-    <li>
-      <%= image_tag card.scryfall_small_image_uri, class: "my-2" %>
-      <%= card.name %>
+    <li class="rounded border-2 p-2">
+      <%= image_tag card.scryfall_small_image_uri, class: "mb-2" %>
+      <%= card.name %> (<%= card.set.code.upcase %>)<br />
+      Released <%= Date::MONTHNAMES[card.set.released_on.month] %> <%= card.set.released_on.year %>
     </li>
   <% end %>
   </ul>
