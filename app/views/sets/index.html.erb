@@ -1,0 +1,13 @@
+<div>
+  <h1 class="font-bold text-4xl">Sets</h1>
+  <hr class="my-4" />
+  <ul class="grid grid-cols-3 gap-4">
+    <%= @sets.each do |set| %>
+    <li class="rounded border-2 p-4">
+      <%= image_tag set.icon_svg_uri, class: "float-left w-10 mr-4" %>
+      <strong><%= set.name %></strong> (<%= set.code.upcase %>)<br />
+      <em><%= set.card_count %> cards</em> — Released <%= Date::MONTHNAMES[set.released_on.month] %> <%= set.released_on.year %>
+    </li>
+    <% end %>
+  </ul>
+</div>
