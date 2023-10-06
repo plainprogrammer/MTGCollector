@@ -1,8 +1,8 @@
 <%= turbo_frame_tag "search_results" do %>
-  <ul class="grid grid-cols-5 gap-2">
+  <ul class="grid grid-cols-5 grid-rows-auto gap-2 text-sm text-center rounded-lg">
   <% @cards.each do |card| %>
-    <li class="rounded border-2 p-2">
-      <%= image_tag card.scryfall_small_image_uri, class: "mb-2" %>
+    <li class="block rounded-lg border-2 border-black px-2 py-2">
+      <%= image_tag card.scryfall_normal_image_uri, class: "min-w-fit mb-2" %>
       <%= card.name %> (<%= card.set.code.upcase %>)<br />
       Released <%= Date::MONTHNAMES[card.set.released_on.month] %> <%= card.set.released_on.year %>
     </li>
