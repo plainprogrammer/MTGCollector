@@ -24,6 +24,8 @@ group :development, :test do
   gem "rspec-github", "~> 2.4", require: false
   gem "rspec-its"
   gem "shoulda-matchers", "~> 5.3.0"
+  gem "capybara", "~> 3.39.2"
+  gem "selenium-webdriver", "~> 4.12.0"
 end
 
 group :development do
