@@ -26,7 +26,7 @@ group :development, :test do
   gem "rspec-its"
   gem "shoulda-matchers", "~> 5.3.0"
   gem "capybara", "~> 3.39.2"
-  gem "selenium-webdriver", "~> 4.12.0"
+  gem "selenium-webdriver", "~> 4.14.0"
 end
 
 group :development do
