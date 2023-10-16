@@ -8,9 +8,9 @@ gem "sprockets-rails"
 gem "pg", "~> 1.5.4"
 gem "puma", "~> 6.0"
 gem "importmap-rails"
-gem "turbo-rails"
-gem "stimulus-rails"
-gem "tailwindcss-rails"
+gem "turbo-rails", "~> 1.5.0"
+gem "stimulus-rails", "~> 1.3.0"
+gem "tailwindcss-rails", "~> 2.0.31"
 gem "redis", "~> 4.0"
 
 gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
