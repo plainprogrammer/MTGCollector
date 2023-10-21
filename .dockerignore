@@ -6,6 +6,9 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore Github config.
+/.github
+
 # Ignore all environment files (except templates).
 /.env*
 !/.env*.erb
