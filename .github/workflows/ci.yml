@@ -44,7 +44,7 @@ jobs:
       - run: bin/rspec --format RSpec::Github::Formatter
   publish-docker:
     name: "Publish Docker Image"
-#    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main'
     needs:
       - analyze
       - rspec
@@ -79,7 +79,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          push: false
+          push: true
           tags: plainprogrammer/mtgcollector:latest
           platforms: ${{ matrix.platform }}
           cache-from: type=local,src=/tmp/.buildx-cache
