@@ -53,8 +53,8 @@ jobs:
       fail-fast: false
       matrix:
         platform:
-          - amd64
-          - arm64
+          - linux/amd64
+          - linux/arm64
     steps:
       - uses: actions/checkout@v4
       - name: Set up Docker Buildx
@@ -77,7 +77,7 @@ jobs:
           context: .
           push: false
           tags: plainprogrammer/mtgcollector:latest
-          platforms: linux/${{ matrix.platform }}
+          platforms: ${{ matrix.platform }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache-new
 #     Temp fix
