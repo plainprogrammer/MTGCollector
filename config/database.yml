@@ -2,15 +2,15 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
+  host: <%= ENV.fetch("DB_HOST") { "postgres" } %>
   port: <%= ENV.fetch("DB_PORT") { 5432 } %>
-  username: <%= ENV.fetch("DB_USER") { nil } %>
-  password: <%= ENV.fetch("DB_PASS") { nil } %>
-  database: <%= ENV.fetch("DB_NAME") { nil } %>
+  username: <%= ENV.fetch("DB_USER") { "postgres" } %>
+  password: <%= ENV.fetch("DB_PASS") { "postgres" } %>
+  database: <%= ENV.fetch("DB_NAME") { "mtgcollector" } %>
 
 development:
   <<: *default
-  database: mtgcollector
+  database: mtgcollector_dev
 
 test:
   <<: *default

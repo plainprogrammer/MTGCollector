@@ -1,0 +1,46 @@
+version: '3.9'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      RAILS_ENV: development
+      DB_HOST: postgres
+      REDIS_URL: "redis://redis:6379/1"
+    depends_on:
+      - postgres
+      - redis
+    volumes:
+      - .:/rails
+    networks:
+      - default
+    ports:
+      - "3000:3000"
+
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    networks:
+      - default
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: mtgcollector_dev
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    networks:
+      - default
+    volumes:
+      - redis-data:/data
+
+networks:
+  default:
+
+volumes:
+  postgres-data:
+  redis-data:
